@@ -132,7 +132,8 @@ struct Game {
                     if (intSelected == 2 && !selectedCharacter.type.canHeal) || intSelected < 1 || intSelected > 2 {
                         // Showing the error if the selection is incorrect (example: asking for healing when using a warrior or an index out of bounds (1, 2), then re ask the player to choose until good choice
                         print(errorCharacterSelection)
-                        displayActions(selectedCharacter)
+                        battle()
+                        
                     } else {
                         executeAction(intSelected, currentPlayerIndex: currentPlayerIndex, selectedCharacter: selectedCharacter)
                         
@@ -148,7 +149,7 @@ struct Game {
                 }else {
                     // Showing the error if the player doesn't select with integer and reselect action
                     print(errorNotIntSelected)
-                    displayActions(selectedCharacter)
+                    battle()
                 }
             }
         }
