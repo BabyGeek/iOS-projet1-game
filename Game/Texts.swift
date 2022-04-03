@@ -89,9 +89,13 @@ You can't interact with a dead character
 """
 
 let battleBegins = """
-                                --------------> BATTLE BEGAN <-------------
+
+--------------> BATTLE BEGAN <-------------
+
 """
 
 let battleEnds = """
-                                --------------> BATTLE ENDS <-------------
+
+--------------> BATTLE ENDS <-------------
+
 """

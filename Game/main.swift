@@ -8,9 +8,6 @@
 import Foundation
 
 
-print("~~test~~")
-print("-- A strikethrough example --")
-print("~~ test ~~")
 // Fast description of the game
 print(introduction)
 

@@ -119,7 +119,7 @@ struct Game {
         print("------------ \(currentPlayer.name) TURN -----------")
         
         // Let the player choose a character to play with
-        print("Choose a character to play with:")
+        print("\nChoose a character to play with:")
         if let selectedCharacter = selectCharacter(currentPlayer) {
             // Display possible actions with the character
             displayActions(selectedCharacter)
@@ -165,8 +165,8 @@ struct Game {
                 // If alive display normal
                 print("\(index + 1) - \(player.team[index].name)")
             } else {
-                // If died display skull and strikethrought the name
-                print("\(index + 1) - ~~ \(player.team[index].name) ~~ ☠️")
+                // If died display skull and strikethrought the name (not working in CLI with no 3rd party lib)
+                print("\(index + 1) - \(player.team[index].name) ☠️")
             }
         }
         
@@ -206,7 +206,7 @@ struct Game {
     
     func displayActions(_ character: Characterable) {
         // Display choices attack / heal depending on the character
-        print("Select an action:")
+        print("\nSelect an action:")
         
         print("1. Attack the ennemy")
         
@@ -222,7 +222,7 @@ struct Game {
         
         // If player selected attack
         if selectedAction == 1 {
-            print("Choose a character to attack:")
+            print("\nChoose a character to attack:")
             // get ennemy player
             // get player selection for attack
             if let selectedAttack = selectCharacter(ennemyPlayer) {
@@ -230,22 +230,22 @@ struct Game {
                 selectedAttack.getDamaged(selectedCharacter.damages)
                 
                 // Show to the player what happened
-                print("\(selectedCharacter.name) attacked \(selectedAttack.name) and has done \(selectedCharacter.damages) damages with his weapon, \(selectedAttack.name) has \(selectedAttack.hp) HP left")
+                print("\n\(selectedCharacter.name) attacked \(selectedAttack.name) and has done \(selectedCharacter.damages) damages with his weapon, \(selectedAttack.name) has \(selectedAttack.hp) HP left")
             }
             
         } else if selectedAction == 2 {
-            print("Choose a character to heal:")
+            print("\nChoose a character to heal:")
             // get ally player to heal
             if let selectedHealed = selectCharacter(currentPlayer) {
                 // if selected is already max HP, tell it to the player but continue the turn
                 if selectedHealed.hp == selectedHealed.maxHP {
-                    print("You healed \(selectedHealed.name), but the character was already full HP.\n")
+                    print("\nYou healed \(selectedHealed.name), but the character was already full HP.\n")
                 }else {
                     // Apply the heal done to the character selected
                     selectedHealed.getHealed(selectedCharacter.damages)
                     
                     // Show to the player what happened
-                    print("\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(selectedCharacter.damages) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")
+                    print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(selectedCharacter.damages) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")
                 }
             }
         }
