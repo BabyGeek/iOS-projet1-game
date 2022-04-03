@@ -133,28 +133,24 @@ struct Game {
                         // Showing the error if the selection is incorrect (example: asking for healing when using a warrior or an index out of bounds (1, 2), then re ask the player to choose until good choice
                         print(errorCharacterSelection)
                         displayActions(selectedCharacter)
-                        
                     } else {
                         executeAction(intSelected, currentPlayerIndex: currentPlayerIndex, selectedCharacter: selectedCharacter)
+                        
+                        // Add a turn
+                        self.turns += 1
+                        // Check if the game is ended
+                        self.isFinished()
+                        // Go back to another turn
+                        if self.isRunning {
+                            battle()
+                        }
                     }
-                    
                 }else {
                     // Showing the error if the player doesn't select with integer and reselect action
                     print(errorNotIntSelected)
                     displayActions(selectedCharacter)
                 }
             }
-        }
-        
-        // Add a turn
-        self.turns += 1
-        
-        // Check if the game is ended
-        self.isFinished()
-        
-        // Go back to another turn
-        if self.isRunning {
-            battle()
         }
     }
     
@@ -242,7 +238,7 @@ struct Game {
                     print("\nYou healed \(selectedHealed.name), but the character was already full HP.\n")
                 }else {
                     // Apply the heal done to the character selected
-                    selectedHealed.getHealed(selectedCharacter.damages)
+                    selectedHealed.getHealed(selectedCharacter.damages * 3)
                     
                     // Show to the player what happened
                     print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(selectedCharacter.damages) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")

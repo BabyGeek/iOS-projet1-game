@@ -31,19 +31,24 @@ Press any key to start the game...
 """
 
 let errorPlayerNumber = """
+
 There were an error while saving your player names,
 one of the two players couldn't be created, please restart the game,
 if the issue persists, please contact our administrators team.
+
 """
 
 let selectionTeamIntroduction = """
+
 Each player as to create his team now,
 we will start with the player one.
+
 """
 
 let makeCharacterSelection = """
 
 Select a character (1, 2, 3, 4):
+
 """
 
 let errorNotIntSelected = """
