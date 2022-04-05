@@ -256,6 +256,10 @@ struct Game {
         return self.turns + 1
     }
     
+    
+    /// Return the time of the game in the type asked
+    /// - Parameter type: String
+    /// - Returns: Double
     func getTimePlayed(type: String) -> Double {
         switch type {
         case "s":

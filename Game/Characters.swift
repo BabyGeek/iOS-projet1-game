@@ -7,19 +7,6 @@
 
 import Foundation
 
-// Protocol that all characters have to adopt
-protocol Characterable {
-    var name: String { get set }
-    var hp: Int { get set }
-    var maxHP: Int { get }
-    var damages: Int { get }
-    var type: CharacterType { get }
-    
-    
-    func getDamaged(_ damages: Int) -> Void
-    func getHealed(_ heal: Int) -> Void
-}
-
 // Enumerator for the character types
 enum CharacterType: Int, CaseIterable {
     case warrior = 1, magus, colossus, dwarf
@@ -27,164 +14,81 @@ enum CharacterType: Int, CaseIterable {
     // Define a more undestandable description for the player choice
     var RPGType: String {
         switch self {
-        case .warrior:
+        case .warrior, .dwarf:
             return "DPS"
         case .magus:
             return "HEAL"
         case .colossus:
             return "TANK"
-        case .dwarf:
-            return "HDPS"
         }
     }
     
     // Helps for the attack selection if the type of character can heal
     var canHeal: Bool {
-        switch self {
-        case .magus:
-            return true
-        default:
-            return false
-        }
+        return self == .magus
     }
     
 }
 
+// Base Characterable class
+class Characterable {
+    var name: String
+    var hp: Int
+    let maxHP: Int
+    var damages: Int
+    var type: CharacterType
+    
+    init(name: String, hp: Int, damages: Int, type: CharacterType) {
+        self.name = name
+        self.hp = hp
+        self.maxHP = hp
+        self.damages = damages
+        self.type = type
+        
+    }
+    
+    func getDamaged(_ damages: Int) {
+        
+        self.hp -= damages
+        
+        if self.hp < 0 {
+            self.hp = 0
+        }
+        
+    }
+    
+    func getHealed(_ heal: Int) {
+        self.hp += heal
+        
+        if self.hp > self.maxHP {
+            self.hp = self.maxHP
+        }
+    }
+}
 
 // Classes that define the current 4 types of characters
 
 class Warrior: Characterable {
-    var maxHP: Int = 100
-    
-    var name: String
-    
-    var hp: Int = 100
-    
-    var damages: Int = 10
-    
-    var type: CharacterType = .warrior
-    
     init(name: String) {
-        self.name = name
-    }
-    
-    func getDamaged(_ damages: Int) {
-        
-        self.hp -= damages
-        
-        if self.hp < 0 {
-            self.hp = 0
-        }
-        
-    }
-    
-    func getHealed(_ heal: Int) {
-        self.hp += heal
-        
-        if self.hp > self.maxHP {
-            self.hp = self.maxHP
-        }
+        super.init(name: name, hp: 100, damages: 10, type: .warrior)
     }
 }
 
 class Magus: Characterable {
-    var maxHP: Int = 150
-    
-    var name: String
-    
-    var hp: Int = 150
-    
-    var damages: Int = 5
-    
-    var type: CharacterType = .magus
     
     init(name: String) {
-        self.name = name
-    }
-    
-    func getDamaged(_ damages: Int) {
-        
-        self.hp -= damages
-        
-        if self.hp < 0 {
-            self.hp = 0
-        }
-        
-    }
-    
-    func getHealed(_ heal: Int) {
-        self.hp += heal
-        
-        if self.hp > self.maxHP {
-            self.hp = self.maxHP
-        }
+        super.init(name: name, hp: 150, damages: 5, type: .magus)
     }
 }
 
 class Colossus: Characterable {
-    var maxHP: Int = 150
-    
-    var name: String
-    
-    var hp: Int = 150
-    
-    var damages: Int = 15
-    
-    var type: CharacterType = .colossus
-    
     init(name: String) {
-        self.name = name
-    }
-    
-    func getDamaged(_ damages: Int) {
-        
-        self.hp -= damages
-        
-        if self.hp < 0 {
-            self.hp = 0
-        }
-        
-    }
-    
-    func getHealed(_ heal: Int) {
-        self.hp += heal
-        
-        if self.hp > self.maxHP {
-            self.hp = self.maxHP
-        }
+        super.init(name: name, hp: 150, damages: 15, type: .colossus)
     }
 }
 
 class Dwarf: Characterable {
-    var maxHP: Int = 50
-    
-    var name: String
-    
-    var hp: Int = 50
-    
-    var damages: Int = 20
-    
-    var type: CharacterType = .dwarf
-    
     init(name: String) {
-        self.name = name
-    }
-    
-    func getDamaged(_ damages: Int) {
-        
-        self.hp -= damages
-        
-        if self.hp < 0 {
-            self.hp = 0
-        }
-        
-    }
-    
-    func getHealed(_ heal: Int) {
-        self.hp += heal
-        
-        if self.hp > self.maxHP {
-            self.hp = self.maxHP
-        }
+        super.init(name: name, hp: 50, damages: 20, type: .dwarf)
     }
 }
