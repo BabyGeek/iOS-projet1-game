@@ -227,7 +227,7 @@ struct Game {
                 selectedAttack.getDamaged(selectedCharacter.damages)
                 
                 // Show to the player what happened
-                print("\n\(selectedCharacter.name) attacked \(selectedAttack.name) and has done \(selectedCharacter.damages) damages with his weapon, \(selectedAttack.name) has \(selectedAttack.hp) HP left")
+                print("\n\(selectedCharacter.name) attacked \(selectedAttack.name) and has done \(selectedCharacter.damages) damages with his weapon, \(selectedAttack.name) has \(selectedAttack.hp) HP left\n")
             }
             
         } else if selectedAction == 2 {
@@ -243,7 +243,7 @@ struct Game {
                     selectedHealed.getHealed(healAmount)
                     
                     // Show to the player what happened
-                    print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(healAmount) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")
+                    print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(healAmount) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left\n")
                 }
             }
         }
