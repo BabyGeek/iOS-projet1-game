@@ -239,10 +239,11 @@ struct Game {
                     print("\nYou healed \(selectedHealed.name), but the character was already full HP.\n")
                 }else {
                     // Apply the heal done to the character selected
-                    selectedHealed.getHealed(selectedCharacter.damages * 3)
+                    let healAmount = selectedCharacter.damages * 3
+                    selectedHealed.getHealed(healAmount)
                     
                     // Show to the player what happened
-                    print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(selectedCharacter.damages) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")
+                    print("\n\(selectedCharacter.name) healed \(selectedHealed.name) and has done \(healAmount) heal with his weapon, \(selectedHealed.name) has now \(selectedHealed.hp) HP left")
                 }
             }
         }
