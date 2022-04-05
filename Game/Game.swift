@@ -257,7 +257,7 @@ struct Game {
     }
     
     
-    /// Return the time of the game in the type asked
+    /// Return the duration of the game in the type asked
     /// - Parameter type: String
     /// - Returns: Double
     func getTimePlayed(type: String) -> Double {
