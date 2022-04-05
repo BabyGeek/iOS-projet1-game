@@ -8,6 +8,7 @@
 import Foundation
 
 
+/// Game structure that will implement all the logic for the game
 struct Game {
     var players: [Player] = [Player]()
     var characterNames = [String]()

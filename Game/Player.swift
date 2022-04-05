@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Player class to handle players
 class Player {
     let name: String
     var team: [Characterable] = [Characterable]()

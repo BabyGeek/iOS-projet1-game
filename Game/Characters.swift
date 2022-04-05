@@ -7,10 +7,9 @@
 
 import Foundation
 
-// Enumerator for the character types
+/// Enumerator for the character types
 enum CharacterType: Int, CaseIterable {
     case warrior = 1, magus, colossus, dwarf
-    
     
     /// Define a more undestandable description for the player choice
     var RPGType: String {
@@ -24,14 +23,13 @@ enum CharacterType: Int, CaseIterable {
         }
     }
     
-    /// Helps for the attack selection if the type of character can heal
+    /// Helps for the actions selection if the type of character can heal
     var canHeal: Bool {
         return self == .magus
     }
-    
 }
 
-/// Base Characterable class
+/// Base Characterable class for all the characters
 class Characterable {
     var name: String
     var hp: Int
@@ -52,7 +50,6 @@ class Characterable {
         self.maxHP = hp
         self.damages = damages
         self.type = type
-        
     }
     
     
@@ -79,27 +76,28 @@ class Characterable {
     }
 }
 
-// Classes that define the current 4 types of characters
-
+/// Classe with Characterable inheritence for the warrior type
 class Warrior: Characterable {
     init(name: String) {
         super.init(name: name, hp: 100, damages: 10, type: .warrior)
     }
 }
 
+/// Classe with Characterable inheritence for the magus type
 class Magus: Characterable {
-    
     init(name: String) {
         super.init(name: name, hp: 150, damages: 5, type: .magus)
     }
 }
 
+/// Classe with Characterable inheritence for the colossus type
 class Colossus: Characterable {
     init(name: String) {
         super.init(name: name, hp: 150, damages: 15, type: .colossus)
     }
 }
 
+/// Classe with Characterable inheritence for the dwarf type
 class Dwarf: Characterable {
     init(name: String) {
         super.init(name: name, hp: 50, damages: 20, type: .dwarf)
