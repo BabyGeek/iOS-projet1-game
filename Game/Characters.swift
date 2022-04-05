@@ -11,7 +11,8 @@ import Foundation
 enum CharacterType: Int, CaseIterable {
     case warrior = 1, magus, colossus, dwarf
     
-    // Define a more undestandable description for the player choice
+    
+    /// Define a more undestandable description for the player choice
     var RPGType: String {
         switch self {
         case .warrior, .dwarf:
@@ -23,14 +24,14 @@ enum CharacterType: Int, CaseIterable {
         }
     }
     
-    // Helps for the attack selection if the type of character can heal
+    /// Helps for the attack selection if the type of character can heal
     var canHeal: Bool {
         return self == .magus
     }
     
 }
 
-// Base Characterable class
+/// Base Characterable class
 class Characterable {
     var name: String
     var hp: Int
@@ -38,6 +39,13 @@ class Characterable {
     var damages: Int
     var type: CharacterType
     
+    
+    /// Init a character
+    /// - Parameters:
+    ///   - name: Name of the character
+    ///   - hp: Base HP of the character
+    ///   - damages: Damages deal by the attack of the character
+    ///   - type: Type of the character
     init(name: String, hp: Int, damages: Int, type: CharacterType) {
         self.name = name
         self.hp = hp
@@ -47,8 +55,10 @@ class Characterable {
         
     }
     
+    
+    /// Remove HPs to the character
+    /// - Parameter damages: Amount of HPs to remove
     func getDamaged(_ damages: Int) {
-        
         self.hp -= damages
         
         if self.hp < 0 {
@@ -57,6 +67,9 @@ class Characterable {
         
     }
     
+    
+    /// Add Hps to the character
+    /// - Parameter heal: Amount of HPs to add
     func getHealed(_ heal: Int) {
         self.hp += heal
         

@@ -18,14 +18,15 @@ struct Game {
     
     let began: Double = Date().timeIntervalSince1970
     
-    // Store a new player if the name isn't empty
+    /// Store a new player if the name isn't empty
     mutating func addPlayer(_ playerName: String) {
         if !playerName.isEmpty {
             players.append(Player(name: playerName))
         }
     }
     
-    // Ask for a given player to select a character until his team isn't complete
+    /// Ask for a given player to select a character until his team isn't complete
+    /// - Parameter player: Current player
     mutating func makePlayerSelectCharacter(_ player: Player) {
         // Telling the player the number character he is selecting
         print("Selecting \(player.team.count + 1) team character \n")
@@ -67,8 +68,10 @@ struct Game {
             makePlayerSelectCharacter(player)
         }
     }
+        
     
-    // Ask for to a player to give a character name and check if this name isn't already in use in the game
+    /// Ask to a player to give a character name and check if this name isn't already in use in the game
+    /// - Returns: The name entered by the player
     mutating func getCharacterName() -> String {
         print(chooseCharacterName)
         
@@ -92,8 +95,8 @@ struct Game {
             return getCharacterName()
         }
     }
-    
-    // Get the players teams details before starting battle and after ending battle
+        
+    /// Get the players teams details before starting battle and after ending battle
     func getPlayersTeams() {
         for player in players {
             print("\(player.name) team: \n")
@@ -107,7 +110,8 @@ struct Game {
         }
     }
     
-    // Battle loop
+    
+    /// Battle loop
     mutating func battle() {
         // Check current player turn
         var currentPlayerIndex = 0
@@ -155,6 +159,10 @@ struct Game {
         }
     }
     
+    
+    /// Character selection for the player
+    /// - Parameter player: Current player playing turn
+    /// - Returns: The selected character
     func selectCharacter(_ player: Player) -> Characterable? {
         for index in player.team.indices {
             
@@ -201,6 +209,9 @@ struct Game {
         return nil
     }
     
+    
+    /// Display the actions for the selected character
+    /// - Parameter character: Selected character
     func displayActions(_ character: Characterable) {
         // Display choices attack / heal depending on the character
         print("\nSelect an action:")
@@ -213,6 +224,12 @@ struct Game {
         
     }
     
+    
+    /// Execute the action for the current player character selected
+    /// - Parameters:
+    ///   - selectedAction: The selected action by the player
+    ///   - currentPlayerIndex: The current player playing
+    ///   - selectedCharacter: The selected Character to execute the action
     func executeAction(_ selectedAction: Int, currentPlayerIndex: Int, selectedCharacter: Characterable) {
         let currentPlayer = currentPlayerIndex == 0 ? players[0] : players[1]
         let ennemyPlayer = currentPlayerIndex == 0 ? players[1] : players[0]
@@ -249,10 +266,16 @@ struct Game {
         }
     }
     
+    
+    /// Get the name of winner
+    /// - Returns: The name of the winner
     func getPlayerWon() -> String {
         return self.playerWon.name
     }
     
+    
+    /// Get the number of turns for a human
+    /// - Returns: The number of turns in the game
     func getTotalTurns() -> Int {
         return self.turns + 1
     }
@@ -275,6 +298,7 @@ struct Game {
     }
     
     
+    /// Checks if the game should still be running or not
     mutating func isFinished() {
         for player in self.players {
             if !player.team.contains(where: {

@@ -19,7 +19,11 @@ class Player {
         self.name = name
     }
     
-    // Add a character to the player team depending on the type
+    
+    /// Add a character to the player team depending on the type
+    /// - Parameters:
+    ///   - type: Type of the character to add
+    ///   - name: Name of the character to add
     func addCharacter(type: CharacterType, name: String) {
         switch type {
         case .warrior:
