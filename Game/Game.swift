@@ -188,6 +188,10 @@ struct Game {
                     return selectCharacter(player)
                     
                 } else {
+                    if intSelected - 1 > player.team.count - 1 {
+                        print(errorCharacterSelection)
+                        return selectCharacter(player)
+                    }
                     // get the selected character
                     let selectedCharacter = player.team[intSelected - 1]
                     
@@ -307,7 +311,7 @@ struct Game {
             }) {
                 self.isRunning = false
                 self.playerWon = players.filter {
-                    $0.name != player.name
+                    $0.id != player.id
                 }.first!
                 break
             }

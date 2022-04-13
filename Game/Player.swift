@@ -8,7 +8,8 @@
 import Foundation
 
 /// Player class to handle players
-class Player {
+class Player: Identifiable {
+    let id: UUID = UUID()
     let name: String
     var team: [Characterable] = [Characterable]()
     
