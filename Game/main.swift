@@ -53,7 +53,6 @@ if let _ = readLine() {
 
     print("Team selection for: \(game.players.last!.name)")
 
-
     // Selection for player Two
     game.makePlayerSelectCharacter(game.players.last!)
     
@@ -62,8 +61,6 @@ if let _ = readLine() {
     // Remembering players the teams
     print(playersTeamsRemindDescription)
     game.getPlayersTeams()
-    
-    
     
     //Starting Battle
     print(doubleSeparator)
