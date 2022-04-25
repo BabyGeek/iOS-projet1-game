@@ -39,22 +39,29 @@ if let _ = readLine() {
         exit(0)
     }
     
+    // Unwrap players before continuing
+    guard let playerOne = game.players.first, let playerTwo = game.players.last else {
+        print(errorPlayerNumber)
+        exit(0)
+    }
+    
     // Preparing the players to select there teams
     print(selectionTeamIntroduction)
     
     print(doubleSeparator)
     
-    print("Team selection for: \(game.players.first!.name)")
+    
+    print("Team selection for: \(playerOne.name)")
 
     // Selection for player One and Two
-    game.makePlayerSelectCharacter(game.players.first!)
+    game.makePlayerSelectCharacter(playerOne)
     
     print(doubleSeparator)
 
-    print("Team selection for: \(game.players.last!.name)")
+    print("Team selection for: \(playerTwo.name)")
 
     // Selection for player Two
-    game.makePlayerSelectCharacter(game.players.last!)
+    game.makePlayerSelectCharacter(playerTwo)
     
     print(doubleSeparator)
     

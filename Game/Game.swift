@@ -310,9 +310,9 @@ class Game {
                 $0.hp > 0
             }) {
                 self.isRunning = false
-                self.playerWon = players.filter {
-                    $0.id != player.id
-                }.first!
+                if let playerWon = players.filter({ $0.id != player.id }).first {
+                    self.playerWon = playerWon
+                }
                 break
             }
         }
