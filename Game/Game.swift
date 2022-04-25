@@ -21,9 +21,7 @@ class Game {
     
     /// Store a new player if the name isn't empty
     func addPlayer(_ playerName: String) {
-        if !playerName.isEmpty {
-            players.append(Player(name: playerName))
-        }
+        !playerName.isEmpty ? players.append(Player(name: playerName)) : ()
     }
     
     /// Ask for a given player to select a character until his team isn't complete
@@ -115,10 +113,7 @@ class Game {
     /// Battle loop
     func battle() {
         // Check current player turn
-        var currentPlayerIndex = 0
-        if turns % 2 == 1 {
-            currentPlayerIndex = 1
-        }
+        let currentPlayerIndex = turns % 2 == 1 ? 1 : 0
         
         let currentPlayer = self.players[currentPlayerIndex]
         print("------------ \(currentPlayer.name) TURN -----------")
