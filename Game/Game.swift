@@ -9,7 +9,7 @@ import Foundation
 
 
 /// Game structure that will implement all the logic for the game
-struct Game {
+class Game {
     var players: [Player] = [Player]()
     var characterNames = [String]()
     
@@ -20,7 +20,7 @@ struct Game {
     let began: Double = Date().timeIntervalSince1970
     
     /// Store a new player if the name isn't empty
-    mutating func addPlayer(_ playerName: String) {
+    func addPlayer(_ playerName: String) {
         if !playerName.isEmpty {
             players.append(Player(name: playerName))
         }
@@ -28,7 +28,7 @@ struct Game {
     
     /// Ask for a given player to select a character until his team isn't complete
     /// - Parameter player: Current player
-    mutating func makePlayerSelectCharacter(_ player: Player) {
+    func makePlayerSelectCharacter(_ player: Player) {
         // Telling the player the number character he is selecting
         print("Selecting \(player.team.count + 1) team character \n")
         
@@ -73,7 +73,7 @@ struct Game {
     
     /// Ask to a player to give a character name and check if this name isn't already in use in the game
     /// - Returns: The name entered by the player
-    mutating func getCharacterName() -> String {
+    func getCharacterName() -> String {
         print(chooseCharacterName)
         
         // Asking the name of the character to the player
@@ -113,7 +113,7 @@ struct Game {
     
     
     /// Battle loop
-    mutating func battle() {
+    func battle() {
         // Check current player turn
         var currentPlayerIndex = 0
         if turns % 2 == 1 {
@@ -304,7 +304,7 @@ struct Game {
     
     
     /// Checks if the game should still be running or not
-    mutating func isFinished() {
+    func isFinished() {
         for player in self.players {
             if !player.team.contains(where: {
                 $0.hp > 0

@@ -15,7 +15,7 @@ if let _ = readLine() {
     print(doubleSeparator)
 
     // Create a game instance to store the datas to show all over the game process
-    var game = Game()
+    let game = Game()
     
     // Ask for the first player name and store it
     print("Enter first player name: ")
